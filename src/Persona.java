@@ -22,4 +22,8 @@ public class Persona {
         this.tiempoLlegada = tiempoLlegada;
     }
 
+    @Override public String toString() {
+        return String.format("Persona{id=%d, tiempoLlegada=%d}", id, tiempoLlegada);
+    }
+
 }

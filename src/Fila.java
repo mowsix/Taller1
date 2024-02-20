@@ -27,18 +27,12 @@ public class Fila {
 
         Fila filaLLena = new Fila();
 
-
-
-
-
-
         for (int i = 0; i<=getCantidadPersonas(); i++ ) {
             int tiempoLlegada = new Random().nextInt(28801);
             Persona persona = new Persona(i,tiempoLlegada);
             filaLLena.agregarPersona(persona);
+
         }
-
-
 
         return  filaLLena;
 
