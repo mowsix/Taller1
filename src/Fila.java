@@ -5,19 +5,41 @@ import java.util.Random;
 public class Fila {
 
     private Queue<Persona> fila;
+    private int CantidadPersonas;
+
+    private Queue<Agente> agentes;
+    public Queue<Agente> getAgentes() {
+        return agentes;
+    }
+
+    public void setAgentes(Queue<Agente> agentes) {
+        this.agentes = agentes;
+    }
+
+
+    public int getCantidadAgentes() {
+        return CantidadAgentes;
+    }
+
+    public void setCantidadAgentes(int cantidadAgentes) {
+        CantidadAgentes = cantidadAgentes;
+    }
+
+    private int CantidadAgentes;
+
     public Queue<Persona> getFila() {
         return fila;
     }
 
-    private int CantidadPersonas;
-    public Fila(int cantidadPersonas) {
+    public Fila(int cantidadPersonas, int cantidadAgentes) {
         setCantidadPersonas(cantidadPersonas);
-        System.out.println(cantidadPersonas+"@@@@@@2");
+        setCantidadAgentes(cantidadAgentes);
         fila = new ArrayDeque<>();
-        System.out.println(fila+"fila");
+        agentes= new ArrayDeque<>();
         llenarFila();
-        System.out.println(fila+"filaLLENAAAA");
+        llenarFilaAgentes();
     }
+
 
     public int getCantidadPersonas() {
         return CantidadPersonas;
@@ -34,11 +56,25 @@ public class Fila {
     public Queue<Persona> llenarFila(){
         for (int i = 1; i<=getCantidadPersonas(); i++ ) {
             int tiempoLlegada = new Random().nextInt(28801);
-            System.out.println(i+ " "+tiempoLlegada);
             Persona persona = new Persona(i,tiempoLlegada);
             agregarPersona(persona);
         }
         return fila;
     }
+
+    public void agregarAgente(Agente agente) {
+        agentes.add(agente);
+    }
+    public Queue<Agente> llenarFilaAgentes(){
+        for (int i = 1; i<=getCantidadAgentes(); i++ ) {
+            //int tiempoServicio = (int) (Math.random() * 3301) + 300;
+            Agente agente = new Agente(i,false);
+            agregarAgente(agente);
+        }
+        return agentes;
+    }
+
+
+
 
 }
