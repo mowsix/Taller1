@@ -1,11 +1,22 @@
+import java.util.Scanner;
+
 public class Taller1 {
 
     public static void main(String[] args) {
-        StdOut.print("Por favor, ingresa tu edad: ");
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese la Cantidad de Personas: ");
+        int cantidadPersonas = Integer.parseInt(scanner.nextLine());
+        Fila filaLlena = new Fila(cantidadPersonas);
+        System.out.println(filaLlena.getFila());
+
+
+
+        /*StdOut.print("Por favor, ingresa tu edad: ");
         int cantidadPersonas = StdIn.readInt();
         Fila filaLlena = new Fila().llenarFila(cantidadPersonas);
         StdOut.print(filaLlena);
-        System.out.println(filaLlena);
+        System.out.println(filaLlena);*/
 
     }
 }
