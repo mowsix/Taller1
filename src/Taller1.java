@@ -7,8 +7,13 @@ public class Taller1 {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese la Cantidad de Personas: ");
         int cantidadPersonas = Integer.parseInt(scanner.nextLine());
-        Fila filaLlena = new Fila(cantidadPersonas);
+        System.out.print("Ingrese la Cantidad de Agentes: ");
+        int cantidadAgentes = Integer.parseInt(scanner.nextLine());
+        Fila filaLlena = new Fila(cantidadPersonas,cantidadAgentes);
         System.out.println(filaLlena.getFila());
+        System.out.println(filaLlena.getAgentes());
+
+
 
 
 
