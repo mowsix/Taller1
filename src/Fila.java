@@ -5,9 +5,18 @@ import java.util.Random;
 public class Fila {
 
     private Queue<Persona> fila;
+    public Queue<Persona> getFila() {
+        return fila;
+    }
+
     private int CantidadPersonas;
-    public Fila() {
+    public Fila(int cantidadPersonas) {
+        setCantidadPersonas(cantidadPersonas);
+        System.out.println(cantidadPersonas+"@@@@@@2");
         fila = new ArrayDeque<>();
+        System.out.println(fila+"fila");
+        llenarFila();
+        System.out.println(fila+"filaLLENAAAA");
     }
 
     public int getCantidadPersonas() {
@@ -18,25 +27,18 @@ public class Fila {
     }
 
 
-
     public void agregarPersona(Persona persona) {
         fila.add(persona);
     }
 
-    public Fila llenarFila(int cantidadPersonas){
-
-        Fila filaLLena = new Fila();
-
-        for (int i = 0; i<=getCantidadPersonas(); i++ ) {
+    public Queue<Persona> llenarFila(){
+        for (int i = 1; i<=getCantidadPersonas(); i++ ) {
             int tiempoLlegada = new Random().nextInt(28801);
+            System.out.println(i+ " "+tiempoLlegada);
             Persona persona = new Persona(i,tiempoLlegada);
-            filaLLena.agregarPersona(persona);
-
+            agregarPersona(persona);
         }
-
-        return  filaLLena;
-
+        return fila;
     }
-
 
 }
