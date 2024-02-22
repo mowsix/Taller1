@@ -5,6 +5,8 @@ public class Persona {
 
     public int tiempoEspera;
 
+    public int tiempoAtencion;
+
     public int getTiempoEspera() {
         return tiempoEspera;
     }
@@ -13,9 +15,10 @@ public class Persona {
     }
 
 
-    public Persona(int id, int tiempoLlegada){
+    public Persona(int tiempoLlegada, int id, int tiempoAtencion ){
         this.id=id;
         this.tiempoLlegada=tiempoLlegada;
+        this.tiempoAtencion=tiempoAtencion;
     }
 
     public int getId() {
@@ -35,7 +38,7 @@ public class Persona {
     @Override
     public String toString() {
         //return "Persona{id= "+id+ ", tiempo de llegada= "+tiempoLlegada+"}";
-        return String.format("Persona{id: "+id+ ", tiempo de llegada= "+tiempoLlegada+"}\n");
+        return String.format("Persona{  Tiempo de llegada: "+tiempoLlegada+ ", id: "+id+", tiempo de Servicio: "+tiempoAtencion+"}\n");
     }
 
 }

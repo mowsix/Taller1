@@ -2,8 +2,15 @@ import java.util.*;
 
 public class Fila {
 
-    private static Queue<Persona> filaPersonas;
-    public static Queue<Persona> getFilaPersonas() {
+
+    private static Persona[] filaPersonas;
+    private static Persona[] filaPersonasOrdenadas;
+    public static Persona[] getFilaPersonasOrdenadas() {
+        return filaPersonasOrdenadas;
+    }
+
+
+    public static Persona[] getFilaPersonas() {
         return filaPersonas;
     }
     private int CantidadPersonas;
@@ -33,7 +40,7 @@ public class Fila {
     public Fila(int cantidadPersonas, int cantidadAgentes) {
         setCantidadPersonas(cantidadPersonas);
         setCantidadAgentes(cantidadAgentes);
-        filaPersonas = new ArrayDeque<>();
+        filaPersonas = new Persona[0];
         agentes= new ArrayList<>();
         llenarFila();
         llenarFilaAgentes();
@@ -48,18 +55,44 @@ public class Fila {
     }
 
 
-    public void agregarPersona(Persona persona) {
+    /*public void agregarPersona(Persona persona) {
+
         filaPersonas.add(persona);
+    }*/
+
+    public Persona[] llenarFila(){
+        ArrayList<Persona> arrayLpersonas = new ArrayList<>();
+        for (int i = 0; i<=getCantidadPersonas()-1; i++ ) {
+            int tiempoLlegada = new Random().nextInt(28801);
+            int tiempoAtencion = (int) (Math.random() * 3301) + 300;
+            Persona persona = new Persona(tiempoLlegada, i , tiempoAtencion );
+            //System.out.println(persona);
+            arrayLpersonas.add(persona);
+        }
+        filaPersonas= arrayLpersonas.toArray(new Persona[0]);
+        filaPersonasOrdenadas=ordenarPorTiempoLlegada(filaPersonas);
+        //System.out.println(Arrays.toString(filaPersonasOrdenadas));
+        return filaPersonasOrdenadas;
     }
 
-    public Queue<Persona> llenarFila(){
-        for (int i = 1; i<=getCantidadPersonas(); i++ ) {
-            int tiempoLlegada = new Random().nextInt(28801);
-            Persona persona = new Persona(i,tiempoLlegada);
-            agregarPersona(persona);
+    public static Persona[] ordenarPorTiempoLlegada(Persona[] personas) {
+        Arrays.sort(personas, Comparator.comparingInt(Persona::getTiempoLlegada));
+
+        for (int i=0;i<= personas.length-1;i++){
+            personas[i].setId(i);
         }
-        return filaPersonas;
+
+        return personas;
     }
+
+
+
+
+
+
+
+
+
 
     public void agregarAgente(Agente agente) {
         agentes.add(agente);

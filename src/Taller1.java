@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Taller1 {
@@ -9,16 +10,15 @@ public class Taller1 {
         int cantidadPersonas = Integer.parseInt(scanner.nextLine());
         System.out.print("Ingrese la Cantidad de Agentes: ");
         int cantidadAgentes = Integer.parseInt(scanner.nextLine());
+
+
+
+
         Fila filaLlena = new Fila(cantidadPersonas,cantidadAgentes);
-        System.out.println(filaLlena.getFilaPersonas());
-        System.out.println(filaLlena.getAgentes());
+        System.out.println(Arrays.toString(Fila.getFilaPersonasOrdenadas()));
+        System.out.println(Fila.getAgentes());
 
-
-        SimuladorFila simulador = new SimuladorFila();
-
-
-
-
+        SimuladorFilas simulador = new SimuladorFilas(cantidadAgentes,filaLlena.getFilaPersonas(),SimuladorFilas.getJornada());
 
 
 
