@@ -4,11 +4,15 @@ import java.util.Random;
 
 public class Fila {
 
-    private Queue<Persona> fila;
+    public int jornada=28800;
+    private static Queue<Persona> filaPersonas;
+    public static Queue<Persona> getFilaPersonas() {
+        return filaPersonas;
+    }
     private int CantidadPersonas;
 
-    private Queue<Agente> agentes;
-    public Queue<Agente> getAgentes() {
+    private static Queue<Agente> agentes;
+    public static Queue<Agente> getAgentes() {
         return agentes;
     }
 
@@ -27,14 +31,12 @@ public class Fila {
 
     private int CantidadAgentes;
 
-    public Queue<Persona> getFila() {
-        return fila;
-    }
+
 
     public Fila(int cantidadPersonas, int cantidadAgentes) {
         setCantidadPersonas(cantidadPersonas);
         setCantidadAgentes(cantidadAgentes);
-        fila = new ArrayDeque<>();
+        filaPersonas = new ArrayDeque<>();
         agentes= new ArrayDeque<>();
         llenarFila();
         llenarFilaAgentes();
@@ -50,7 +52,7 @@ public class Fila {
 
 
     public void agregarPersona(Persona persona) {
-        fila.add(persona);
+        filaPersonas.add(persona);
     }
 
     public Queue<Persona> llenarFila(){
@@ -59,7 +61,7 @@ public class Fila {
             Persona persona = new Persona(i,tiempoLlegada);
             agregarPersona(persona);
         }
-        return fila;
+        return filaPersonas;
     }
 
     public void agregarAgente(Agente agente) {
@@ -73,6 +75,11 @@ public class Fila {
         }
         return agentes;
     }
+
+    public void ocuparAgente(int id){
+
+    }
+
 
 
 }

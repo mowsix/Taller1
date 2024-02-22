@@ -10,8 +10,13 @@ public class Taller1 {
         System.out.print("Ingrese la Cantidad de Agentes: ");
         int cantidadAgentes = Integer.parseInt(scanner.nextLine());
         Fila filaLlena = new Fila(cantidadPersonas,cantidadAgentes);
-        System.out.println(filaLlena.getFila());
+        System.out.println(filaLlena.getFilaPersonas());
         System.out.println(filaLlena.getAgentes());
+
+
+        SimuladorFila simulador = new SimuladorFila();
+
+
 
 
 
