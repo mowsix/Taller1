@@ -1,22 +1,19 @@
-import java.util.ArrayDeque;
-import java.util.Queue;
-import java.util.Random;
+import java.util.*;
 
 public class Fila {
 
-    public int jornada=28800;
     private static Queue<Persona> filaPersonas;
     public static Queue<Persona> getFilaPersonas() {
         return filaPersonas;
     }
     private int CantidadPersonas;
 
-    private static Queue<Agente> agentes;
-    public static Queue<Agente> getAgentes() {
+    private static List<Agente> agentes;
+    public static List<Agente> getAgentes() {
         return agentes;
     }
 
-    public void setAgentes(Queue<Agente> agentes) {
+    public void setAgentes(List<Agente> agentes) {
         this.agentes = agentes;
     }
 
@@ -37,7 +34,7 @@ public class Fila {
         setCantidadPersonas(cantidadPersonas);
         setCantidadAgentes(cantidadAgentes);
         filaPersonas = new ArrayDeque<>();
-        agentes= new ArrayDeque<>();
+        agentes= new ArrayList<>();
         llenarFila();
         llenarFilaAgentes();
     }
@@ -67,17 +64,22 @@ public class Fila {
     public void agregarAgente(Agente agente) {
         agentes.add(agente);
     }
-    public Queue<Agente> llenarFilaAgentes(){
+    public List<Agente> llenarFilaAgentes(){
         for (int i = 1; i<=getCantidadAgentes(); i++ ) {
             //int tiempoServicio = (int) (Math.random() * 3301) + 300;
-            Agente agente = new Agente(i,false);
+            Agente agente = new Agente(i,false, 0);
             agregarAgente(agente);
         }
         return agentes;
     }
 
-    public void ocuparAgente(int id){
+    public static void ocuparAgente(int id, boolean estado){
+        agentes.get(id).setEstaOcupado(estado);
+    }
 
+
+    public static void asignarTiempoDeServicio(int id, int tiempoServicio){
+        agentes.get(id).setTiempoServicio(tiempoServicio);
     }
 
 
