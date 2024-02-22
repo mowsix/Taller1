@@ -25,15 +25,16 @@ public class Agente {
     }
 
 
-    public Agente(int id, boolean estaOcupado) {
+    public Agente(int id, boolean estaOcupado, int tiempoServicio ) {
         this.id = id;
         this.estaOcupado = estaOcupado;
+        this.tiempoServicio= tiempoServicio;
     }
 
     @Override
     public String toString() {
         //return "Persona{id= "+id+ ", tiempo de llegada= "+tiempoLlegada+"}";
-        return String.format("Agente{id: "+id+ ", Esta Ocupado= "+estaOcupado+"}\n");
+        return String.format("Agente{id: "+id+ ", Esta Ocupado= "+estaOcupado+" Tiempo en servicio = "+tiempoServicio+"}\n");
     }
 
 
