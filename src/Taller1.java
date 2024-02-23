@@ -2,6 +2,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Taller1 {
+    /*=====TALLER 1=======
+    SANTIAGO GALLEGO HENAO
+    SEBASTIAN FORERO DUQUE
+    SEBASTIAN VILLA VARGAS
+     */
 
     public static void main(String[] args) {
 
@@ -34,8 +39,11 @@ public class Taller1 {
         System.out.println("Dato esperado: "+sim.getPromedioOcupacion());
         System.out.println("Dato Obtenido: "+sim.getPromedioEspera());*/
 
-
-        Persona[] personas = { new Persona(2, 0, 5), new Persona(4, 1, 3) };
+        Persona[] personas = {
+                new Persona(0, 0, 2),
+                new Persona(0, 1, 2),
+                new Persona(0, 2, 2)
+        };
         SimuladorFilas sim = new SimuladorFilas(1, personas, 10);
         sim.correrSimulacion();
         System.out.println("Dato esperado: "+sim.getPromedioOcupacion());

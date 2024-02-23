@@ -29,13 +29,11 @@ public class SimuladorFilas {
         //Fila filaLlena = new Fila();
         Fila.setCantidadPersonas(personas.length);
         Fila.setCantidadAgentes(cantidadAgentes);
-        this.jornada=jornada;
+        this.jornada = jornada;
         Fila.setFilaPersonasOrdenadas(personas);
         Fila.llenarFilaAgentes(cantidadAgentes);
 
         //correrSimulacion();
-
-
 
 
     }
@@ -44,47 +42,51 @@ public class SimuladorFilas {
 
         int agenteEnTiempoDeServicio = 0;
 
-        int contadorAgentesOcupados=0;
+        int contadorAgentesOcupados = 0;
 
 
-        boolean control=false;
+        boolean control = false;
 
         for (int t = 0; t <= jornada; t++) {
-            //System.out.println(t + " " + Fila.getAgentes() + " " + Arrays.toString(Fila.getFilaPersonasOrdenadas()));
-            //System.out.println(contadorTiempoDeEspera+"    OOOOOOOOOOODJGDFKGDLFKJG");
+            System.out.println(t + " " + Fila.getAgentes() + " " + Arrays.toString(Fila.getFilaPersonasOrdenadas()));
+            System.out.println(contadorTiempoDeEspera + "    OOOOOOOOOOODJGDFKGDLFKJG");
+
 
             for (Persona persona : Fila.getFilaPersonasOrdenadas()) {
+
                 if (t >= persona.tiempoLlegada) {
-                    control=true;
-                    contadorAgentesOcupados=0;
+                    control = true;
+                    contadorAgentesOcupados = 0;
                     for (Agente agente : Fila.getAgentes()) {
-                        if (!agente.agenteLibre) {
-                            contadorAgentesOcupados++;
 
-                            //break; // No es necesario continuar verificando si uno ya está ocupado
-                        }
-
-                        if (agente.agenteLibre && control) {
-                            control=false;
-
-                            Fila.liberarAgente(agente.id, false);
-                            int tiempo=persona.tiempoAtencion;
-                            int tiempoParaLiberar=t+persona.tiempoAtencion;
-                            Fila.asignarTiempoParaLiberar(agente.id,tiempoParaLiberar);
-
-                           // System.out.println(tiempo+"rrrrrrrrrrrrrrrr"+agente.id+"pidddd"+persona.id);
-                            Fila.asignarTiempoDeServicio(agente.id, tiempo);
-                            Fila.eliminarPrimeraPersona(Fila.getFilaPersonasOrdenadas());
-
-                        }else if (t==agente.tiempoParaLiberar){
+                        if (agente.tiempoParaLiberar == t) {
                             Fila.liberarAgente(agente.id, true);
                         }
 
+                        if (!agente.agenteLibre) {
+                            contadorAgentesOcupados++;
+
+                        }
+
+                        if (agente.agenteLibre && control) {
+                            control = false;
+
+                            Fila.liberarAgente(agente.id, false);
+                            int tiempo = persona.tiempoAtencion;
+                            int tiempoParaLiberar = t + persona.tiempoAtencion;
+                            Fila.asignarTiempoParaLiberar(agente.id, tiempoParaLiberar);
+
+                            // System.out.println(tiempo+"rrrrrrrrrrrrrrrr"+agente.id+"pidddd"+persona.id);
+                            Fila.asignarTiempoDeServicio(agente.id, tiempo);
+                            Fila.eliminarPrimeraPersona(Fila.getFilaPersonasOrdenadas());
+
+                        }
+
+
                     }
-                    if (contadorAgentesOcupados==Fila.getCantidadAgentes()) {
+                    if (contadorAgentesOcupados == Fila.getCantidadAgentes()) {
                         contadorTiempoDeEspera++;
                     }
-
                 }
             }
 
@@ -92,30 +94,26 @@ public class SimuladorFilas {
 
         }
 
-        int x=0;
-        for (Agente agente : Fila.getAgentes()){
+        int x = 0;
+        for (Agente agente : Fila.getAgentes()) {
 
-            x+= Fila.getTiempoDeServicio(agente.id);
+            x += Fila.getTiempoDeServicio(agente.id);
 
 
         }
 
         //System.out.println("PERSONASSS: "+ Fila.getCantidadPersonas());
 
-      promedioEspera = ((contadorTiempoDeEspera)/Fila.getCantidadPersonas());
-        //System.out.println(contadorTiempoDeEspera);
-        //System.out.println(Fila.getCantidadPersonas());
-
 
         //System.out.println(x+"SUMAAAAA");
         //System.out.println(jornada+"·······");
-        promedioOcupacion= (((double) (x))/((double) (jornada)))*100;
+        promedioOcupacion = ((((double) (x)) / ((double) (Fila.getCantidadAgentes()))) / ((double) (jornada))) * 100;
 
 
+        promedioEspera = ((contadorTiempoDeEspera) / Fila.getCantidadPersonas());
+        System.out.println("" + contadorTiempoDeEspera);
+        System.out.println("#Personasssss" + Fila.getCantidadPersonas());
     }
-
-
-
 
 
 }

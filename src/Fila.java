@@ -1,31 +1,23 @@
 import java.util.*;
 
 public class Fila {
-
-
     private static Persona[] filaPersonas;
-
     public static void setFilaPersonasOrdenadas(Persona[] filaPersonasOrdenadas) {
         Fila.filaPersonasOrdenadas = filaPersonasOrdenadas;
     }
+    public static Persona[] getFilaPersonas() {
+        return filaPersonas;
+    }
 
     private static Persona[] filaPersonasOrdenadas;
-
-
     public static Persona[] getFilaPersonasOrdenadas() {
         return filaPersonasOrdenadas;
     }
 
-
-    public static Persona[] getFilaPersonas() {
-        return filaPersonas;
-    }
     private static int CantidadPersonas;
-
     public static int getCantidadPersonas() {
         return CantidadPersonas;
     }
-
     public static void setCantidadPersonas(int cantidadPersonas) {
         CantidadPersonas = cantidadPersonas;
     }
@@ -34,17 +26,14 @@ public class Fila {
     public static List<Agente> getAgentes() {
         return agentes;
     }
-
     public void setAgentes(List<Agente> agentes) {
         this.agentes = agentes;
     }
 
     public static int CantidadAgentes;
-
     public static int getCantidadAgentes() {
         return CantidadAgentes;
     }
-
     public static void setCantidadAgentes(int cantidadAgentes) {
         CantidadAgentes = cantidadAgentes;
     }
@@ -60,9 +49,6 @@ public class Fila {
       public Fila() {
 
       }
-
-
-
 
     /*public void agregarPersona(Persona persona) {
 
@@ -102,17 +88,12 @@ public class Fila {
 
         // Crear un nuevo arreglo con una longitud menor
         Persona[] nuevoArreglo = new Persona[personas.length - 1];
-
-
         // Copiar las personas excepto la primera
         for (int i = 1; i < personas.length; i++) {
             nuevoArreglo[i - 1] = personas[i];
         }
-
         filaPersonasOrdenadas=nuevoArreglo;
-
     }
-
 
 
 
@@ -123,7 +104,6 @@ public class Fila {
     public static void agregarAgente(Agente agente) {
         agentes.add(agente);
     }
-
 
     public static List<Agente> llenarFilaAgentes(int cantidadAgentes){
         setCantidadAgentes(cantidadAgentes);
@@ -138,7 +118,6 @@ public class Fila {
     public static void ocuparAgente(int id, boolean estado){
         agentes.get(id).setAgenteLibre(estado);
     }
-
 
     public static void asignarTiempoDeServicio(int id, int tiempoServicio){
 

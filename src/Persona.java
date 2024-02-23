@@ -1,10 +1,8 @@
 public class Persona {
+
     public int id;
     public int tiempoLlegada;
-
-
     public int tiempoEspera;
-
     public int tiempoAtencion;
 
     public int getTiempoEspera() {

@@ -1,9 +1,10 @@
 public class Agente {
+
     public int id;
     public int tiempoServicio;
     public boolean agenteLibre;
-
     public int tiempoParaLiberar;
+
 
     public int getTiempoParaLiberar() {
         return tiempoParaLiberar;
@@ -33,6 +34,7 @@ public class Agente {
     public void setAgenteLibre(boolean agenteLibre) {
         this.agenteLibre = agenteLibre;
     }
+
 
 
     public Agente(int id, boolean agenteLibre, int tiempoServicio, int tiempoParaLiberar ) {
