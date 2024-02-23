@@ -5,11 +5,11 @@ public class Taller1 {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        /*Scanner scanner = new Scanner(System.in);
         System.out.print("Ingrese la Cantidad de Personas: ");
         int cantidadPersonas = Integer.parseInt(scanner.nextLine());
         System.out.print("Ingrese la Cantidad de Agentes: ");
-        int cantidadAgentes = Integer.parseInt(scanner.nextLine());
+        int cantidadAgentes = Integer.parseInt(scanner.nextLine());*/
 
 
 
@@ -23,13 +23,23 @@ public class Taller1 {
 
         //Persona[] personas = { new Persona(2, 0, 5), new Persona(4, 1, 3) };
 
-        Fila filallena = new Fila(cantidadPersonas,cantidadAgentes);
+        //Fila filallena = new Fila();
+        //Persona[] personas = filallena.llenarFila(cantidadPersonas);
+
+        /*Persona[] personas = { new Persona(2, 0, 5), new Persona(4, 1, 3) };
+        System.out.println(Arrays.toString(personas));
+        SimuladorFilas sim = new SimuladorFilas(1, personas, 10);
+        System.out.println(Fila.getAgentes());
+        sim.correrSimulacion();
+        System.out.println("Dato esperado: "+sim.getPromedioOcupacion());
+        System.out.println("Dato Obtenido: "+sim.getPromedioEspera());*/
+
+
+        Persona[] personas = { new Persona(2, 0, 5), new Persona(4, 1, 3) };
         SimuladorFilas sim = new SimuladorFilas(1, personas, 10);
         sim.correrSimulacion();
         System.out.println("Dato esperado: "+sim.getPromedioOcupacion());
         System.out.println("Dato Obtenido: "+sim.getPromedioEspera());
-
-
 
 
         /*StdOut.print("Por favor, ingresa tu edad: ");
