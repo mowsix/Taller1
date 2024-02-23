@@ -1,7 +1,17 @@
 public class Agente {
     public int id;
     public int tiempoServicio;
-    public boolean estaOcupado = false;
+    public boolean agenteLibre;
+
+    public int tiempoParaLiberar;
+
+    public int getTiempoParaLiberar() {
+        return tiempoParaLiberar;
+    }
+
+    public void setTiempoParaLiberar(int tiempoParaLiberar) {
+        this.tiempoParaLiberar = tiempoParaLiberar;
+    }
 
     public int getId() {
         return id;
@@ -17,24 +27,25 @@ public class Agente {
         this.tiempoServicio = tiempoServicio;
     }
 
-    public boolean isEstaOcupado() {
-        return estaOcupado;
+    public boolean isAgenteLibre() {
+        return agenteLibre;
     }
-    public void setEstaOcupado(boolean estaOcupado) {
-        this.estaOcupado = estaOcupado;
+    public void setAgenteLibre(boolean agenteLibre) {
+        this.agenteLibre = agenteLibre;
     }
 
 
-    public Agente(int id, boolean estaOcupado, int tiempoServicio ) {
+    public Agente(int id, boolean agenteLibre, int tiempoServicio, int tiempoParaLiberar ) {
         this.id = id;
-        this.estaOcupado = estaOcupado;
+        this.agenteLibre = agenteLibre;
         this.tiempoServicio= tiempoServicio;
+        this.tiempoParaLiberar=tiempoParaLiberar;
     }
 
     @Override
     public String toString() {
         //return "Persona{id= "+id+ ", tiempo de llegada= "+tiempoLlegada+"}";
-        return String.format("Agente{id: "+id+ ", Esta Ocupado= "+estaOcupado+" Tiempo en servicio = "+tiempoServicio+"}\n");
+        return String.format("Agente{id: "+id+ ", Esta Libre= "+ agenteLibre +" Tiempo en servicio = "+tiempoServicio+"}\n");
     }
 
 

@@ -4,7 +4,14 @@ public class Fila {
 
 
     private static Persona[] filaPersonas;
+
+    public static void setFilaPersonasOrdenadas(Persona[] filaPersonasOrdenadas) {
+        Fila.filaPersonasOrdenadas = filaPersonasOrdenadas;
+    }
+
     private static Persona[] filaPersonasOrdenadas;
+
+
     public static Persona[] getFilaPersonasOrdenadas() {
         return filaPersonasOrdenadas;
     }
@@ -13,7 +20,15 @@ public class Fila {
     public static Persona[] getFilaPersonas() {
         return filaPersonas;
     }
-    private int CantidadPersonas;
+    private static int CantidadPersonas;
+
+    public static int getCantidadPersonas() {
+        return CantidadPersonas;
+    }
+
+    public static void setCantidadPersonas(int cantidadPersonas) {
+        CantidadPersonas = cantidadPersonas;
+    }
 
     private static List<Agente> agentes;
     public static List<Agente> getAgentes() {
@@ -24,35 +39,26 @@ public class Fila {
         this.agentes = agentes;
     }
 
+    public static int CantidadAgentes;
 
-    public int getCantidadAgentes() {
+    public static int getCantidadAgentes() {
         return CantidadAgentes;
     }
 
-    public void setCantidadAgentes(int cantidadAgentes) {
+    public static void setCantidadAgentes(int cantidadAgentes) {
         CantidadAgentes = cantidadAgentes;
     }
-
-    private int CantidadAgentes;
-
-
 
     public Fila(int cantidadPersonas, int cantidadAgentes) {
         setCantidadPersonas(cantidadPersonas);
         setCantidadAgentes(cantidadAgentes);
         filaPersonas = new Persona[0];
         agentes= new ArrayList<>();
-        llenarFila();
-        llenarFilaAgentes();
+       // llenarFila();
+        //llenarFilaAgentes();
     }
 
 
-    public int getCantidadPersonas() {
-        return CantidadPersonas;
-    }
-    public void setCantidadPersonas(int cantidadPersonas) {
-        CantidadPersonas = cantidadPersonas;
-    }
 
 
     /*public void agregarPersona(Persona persona) {
@@ -60,11 +66,14 @@ public class Fila {
         filaPersonas.add(persona);
     }*/
 
-    public Persona[] llenarFila(){
+    public Persona[] llenarFila(int cantidadPersonas){
         ArrayList<Persona> arrayLpersonas = new ArrayList<>();
         for (int i = 0; i<=getCantidadPersonas()-1; i++ ) {
-            int tiempoLlegada = new Random().nextInt(28801);
-            int tiempoAtencion = (int) (Math.random() * 3301) + 300;
+            //int tiempoLlegada = new Random().nextInt(28801);
+            //int tiempoAtencion = (int) (Math.random() * 3301) + 300;
+
+            int tiempoLlegada = new Random().nextInt(11);
+            int tiempoAtencion = (int) (Math.random() * 3) + 2;
             Persona persona = new Persona(tiempoLlegada, i , tiempoAtencion );
             //System.out.println(persona);
             arrayLpersonas.add(persona);
@@ -85,7 +94,20 @@ public class Fila {
         return personas;
     }
 
+    public static void eliminarPrimeraPersona(Persona[] personas) {
 
+        // Crear un nuevo arreglo con una longitud menor
+        Persona[] nuevoArreglo = new Persona[personas.length - 1];
+
+
+        // Copiar las personas excepto la primera
+        for (int i = 1; i < personas.length; i++) {
+            nuevoArreglo[i - 1] = personas[i];
+        }
+
+        filaPersonasOrdenadas=nuevoArreglo;
+
+    }
 
 
 
@@ -98,23 +120,31 @@ public class Fila {
         agentes.add(agente);
     }
     public List<Agente> llenarFilaAgentes(){
-        for (int i = 1; i<=getCantidadAgentes(); i++ ) {
+        for (int i = 0; i<=getCantidadAgentes()-1; i++ ) {
             //int tiempoServicio = (int) (Math.random() * 3301) + 300;
-            Agente agente = new Agente(i,false, 0);
+            Agente agente = new Agente(i,true, 0,0);
             agregarAgente(agente);
         }
         return agentes;
     }
 
     public static void ocuparAgente(int id, boolean estado){
-        agentes.get(id).setEstaOcupado(estado);
+        agentes.get(id).setAgenteLibre(estado);
     }
 
 
     public static void asignarTiempoDeServicio(int id, int tiempoServicio){
-        agentes.get(id).setTiempoServicio(tiempoServicio);
+        int tiempoAcumulado=agentes.get(id).tiempoServicio+tiempoServicio;
+        agentes.get(id).setTiempoServicio(tiempoAcumulado);
     }
 
+    public static void asignarTiempoParaLiberar(int id, int tiempoParaLiberar){
+        agentes.get(id).setTiempoParaLiberar(tiempoParaLiberar);
+    }
 
+    public static void liberarAgente(int id, boolean Libre){
+
+        agentes.get(id).setAgenteLibre(Libre);
+    }
 
 }

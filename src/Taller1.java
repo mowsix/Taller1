@@ -14,11 +14,21 @@ public class Taller1 {
 
 
 
-        Fila filaLlena = new Fila(cantidadPersonas,cantidadAgentes);
+        /*Fila filaLlena = new Fila(cantidadPersonas,cantidadAgentes);
         System.out.println(Arrays.toString(Fila.getFilaPersonasOrdenadas()));
         System.out.println(Fila.getAgentes());
+        SimuladorFilas simulador = new SimuladorFilas(cantidadAgentes,filaLlena.getFilaPersonas(),28800);*/
 
-        SimuladorFilas simulador = new SimuladorFilas(cantidadAgentes,filaLlena.getFilaPersonas(),SimuladorFilas.getJornada());
+
+
+        //Persona[] personas = { new Persona(2, 0, 5), new Persona(4, 1, 3) };
+
+        Fila filallena = new Fila(cantidadPersonas,cantidadAgentes);
+        SimuladorFilas sim = new SimuladorFilas(1, personas, 10);
+        sim.correrSimulacion();
+        System.out.println("Dato esperado: "+sim.getPromedioOcupacion());
+        System.out.println("Dato Obtenido: "+sim.getPromedioEspera());
+
 
 
 
